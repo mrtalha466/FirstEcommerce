@@ -8,7 +8,7 @@ const HomeComponentCard = ({ product }) => {
           <img
             className="pt-2 object-cover object-top w-full h-full"
             src={product.imageUrl}
-            alt="firstcard"
+            alt="Homecards"
           />
         </div>
 
