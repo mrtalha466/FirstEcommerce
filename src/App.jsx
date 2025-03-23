@@ -1,15 +1,14 @@
 import React from 'react'
-import Navigation from './customer/navigation/navigation'
-import HomePage from './customer/components/Homepage/HomePage'
+import Navigation from './customer/navigation/Navigation'
+import HomePage from './customer/pages/HomePage'
 
 const App = () => {
   return (
     <>
-      <Navigation />
-     
- 
-        <HomePage />
-     
+      <Navigation/>
+      
+      <HomePage />
+
     </>
   )
 }
