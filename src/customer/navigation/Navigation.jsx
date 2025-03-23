@@ -7,12 +7,15 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
-
-import { deepPurple } from "@mui/material/colors";
-
 import { navigation } from "./navigationData";
+import { deepPurple } from "@mui/material/colors";
+// import AuthModal from "../Auth/AuthModal";
+import { useDispatch, useSelector } from "react-redux";
+// import { getUser, logout } from "../../../Redux/Auth/Action";
+// import { getCart } from "../../../Redux/Customers/Cart/Action";
+import TextField from "@mui/material/TextField";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,21 +24,21 @@ function classNames(...classes) {
 
 const Navigation=()=> {
   const [open, setOpen] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const { auth, cart } = useSelector((store) => store);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
-  // const jwt = localStorage.getItem("jwt");
-  // const location = useLocation();
+  const jwt = localStorage.getItem("jwt");
+  const location = useLocation();
 
-  // useEffect(() => {
-  //   if (jwt) {
-  //     dispatch(getUser(jwt));
-  //     dispatch(getCart(jwt));
-  //   }
-  // }, [jwt]);
+  useEffect(() => {
+    if (jwt) {
+      dispatch(getUser(jwt));
+      dispatch(getCart(jwt));
+    }
+  }, [jwt]);
 
   const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -57,12 +60,12 @@ const Navigation=()=> {
   };
 
   // useEffect(() => {
-  //   if (auth.user) {
-  //     handleClose();
-  //   }
-  //   if (location.pathname === "/login" || location.pathname === "/register") {
-  //     navigate(-1);
-  //   }
+    // if (auth.user) {
+    //   handleClose();
+    // }
+    // if (location.pathname === "/login" || location.pathname === "/register") {
+    //   navigate(-1);
+    // }
   // }, [auth.user]);
 
   const handleLogout = () => {
@@ -77,7 +80,7 @@ const Navigation=()=> {
   };
 
   return (
-    <div className="bg-white pb-10">
+    <div className="bg-white pb-3">
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
@@ -243,7 +246,7 @@ const Navigation=()=> {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-white">
+      <header className="relative bg-white ">
         <p className="flex h-10 items-center justify-center bg-black px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
         Free Delivery All Over Pakistan
         </p>
@@ -262,18 +265,18 @@ const Navigation=()=> {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-          
+              <Link to="/">
                   <span className="sr-only">Your Company</span>
                   <img
                     src="logo.png "
                     alt="Shopwithzosh"
                     className="h-8 w-8 mr-2"
                   />
-             
+               </Link>
               </div>
 
               {/* Flyout menus */}
-              <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch z-10">
+              <Popover.Group className=" hidden lg:ml-8 lg:block lg:self-stretch z-10">
                 <div className="flex h-full space-x-8">
                   {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
@@ -301,7 +304,7 @@ const Navigation=()=> {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                           >
-                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
+                            <Popover.Panel className=" absolute inset-x-0 top-full text-sm text-gray-500">
                               {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                               <div
                                 className="absolute inset-0 top-1/2 bg-white shadow"
@@ -449,14 +452,14 @@ const Navigation=()=> {
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
-                  {/* ) : ( */}
+                   {/* ) : (  */}
                     <Button
                       onClick={handleOpen}
                       className="text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
                       Signin
                     </Button>
-                  {/* )} */}
+                  {/* )}  */}
                 </div>
 
                 {/* Search */}
