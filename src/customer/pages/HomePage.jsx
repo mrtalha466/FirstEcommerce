@@ -9,6 +9,7 @@ import { Mens_Jeans } from '../../Data/Mens_Jeans';
 import { Goun } from '../../Data/Goun';
 import { lehngaCholi } from '../../Data/LehangaCholi';
 import Footer from '../components/Homepage/footer/Footer';
+import { Saree } from '../../Data/Saree';
 
 
 
@@ -19,8 +20,9 @@ const HomePage = () => {
     <>
       <MainCarosel />
 
-      <div className='space-y-10 py-20 flex flex-col justify-center px-5 lg:px-8  '>
+      <div className='space-y-10 py-10 flex flex-col justify-center px-5 lg:px-8  '>
         <HomeSectionCarousal data={Women_Dress} sectionName={"Women's Dress"} />
+        <HomeSectionCarousal data={Saree} sectionName={"Saree"} />
         <HomeSectionCarousal data={Goun} sectionName={"Women's Goun"} />
         <HomeSectionCarousal data={lehngaCholi} sectionName={"Women's LehangaCholi"} />
         <HomeSectionCarousal data={Mens_kurta} sectionName={"Men's Kurta"} />
