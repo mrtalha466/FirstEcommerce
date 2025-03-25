@@ -1,16 +1,16 @@
 import React from 'react'
-import MainCarosel from '../HomeCrosel/MainCarosel';
-import HomeSectionCarousal from '../components/Homepage/HomeSectionCarousal/HomeSectionCarousal';
+import MainCarosel from '../customer/HomeCrosel/MainCarosel';
+import HomeSectionCarousal from '../customer/components/Homepage/HomeSectionCarousal/HomeSectionCarousal';
 
-import { Women_Dress } from '../../Data/Women_Dress';
-import { Mens_Pants } from '../../Data/Mens_Pants';
-import { Mens_Shirts } from '../../Data/Mens_Shirts';
-import { Mens_Jeans } from '../../Data/Mens_Jeans';
-import { Goun } from '../../Data/Goun';
-import { lehngaCholi } from '../../Data/LehangaCholi';
-import Footer from '../components/Homepage/footer/Footer';
-import { Saree } from '../../Data/Saree';
-import { mens_kurta } from '../../Data/mens_kurta';
+import { Women_Dress } from '../Data/Women_Dress';
+import { Mens_Pants } from '../Data/Mens_Pants';
+import { Mens_Shirts } from '../Data/Mens_Shirts';
+import { Mens_Jeans } from '../Data/Mens_Jeans';
+import { Goun } from '../Data/Goun';
+import { lehngaCholi } from '../Data/LehangaCholi';
+import Footer from '../customer/components/Homepage/footer/Footer';
+import { Saree } from '../Data/Saree';
+import { mens_kurta } from '../Data/mens_kurta';
 
 const HomePage = () => {
   return (
