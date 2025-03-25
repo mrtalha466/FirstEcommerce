@@ -22,7 +22,7 @@ import { StarIcon } from '@heroicons/react/20/solid'
 import { Radio, RadioGroup } from '@headlessui/react'
 import { Box, Button, Grid, LinearProgress, Rating } from '@mui/material'
 import ProductReviewCard from './ProductReviewCard'
-import { Mens_kurta } from '../../../Data/mens_kurta'
+import { mens_kurta } from '../../../Data/mens_kurta'
 import HomeComponentCard from '../Homepage/HomeComponentCard/HomeComponentCard'
 import { useNavigate } from 'react-router-dom'
 
