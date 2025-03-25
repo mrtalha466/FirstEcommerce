@@ -1,7 +1,7 @@
 import React from 'react'
 import MainCarosel from '../HomeCrosel/MainCarosel';
 import HomeSectionCarousal from '../components/Homepage/HomeSectionCarousal/HomeSectionCarousal';
-import { Mens_kurta } from '../../Data/mens_kurta';
+import { Mens_kurta } from '../../Data/Mens_kurta.js';
 import { Women_Dress } from '../../Data/Women_Dress';
 import { Mens_Pants } from '../../Data/Mens_Pants';
 import { Mens_Shirts } from '../../Data/Mens_Shirts';
