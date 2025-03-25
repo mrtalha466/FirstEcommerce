@@ -1,7 +1,6 @@
 import React from 'react'
 import MainCarosel from '../HomeCrosel/MainCarosel';
 import HomeSectionCarousal from '../components/Homepage/HomeSectionCarousal/HomeSectionCarousal';
-import { Mens_kurta } from '../../Data/Mens_kurta.js';
 import { Women_Dress } from '../../Data/Women_Dress';
 import { Mens_Pants } from '../../Data/Mens_Pants';
 import { Mens_Shirts } from '../../Data/Mens_Shirts';
@@ -10,6 +9,7 @@ import { Goun } from '../../Data/Goun';
 import { lehngaCholi } from '../../Data/LehangaCholi';
 import Footer from '../components/Homepage/footer/Footer';
 import { Saree } from '../../Data/Saree';
+import { mens_kurta } from '../../Data/mens_kurta';
 
 const HomePage = () => {
   return (
@@ -21,7 +21,7 @@ const HomePage = () => {
         <HomeSectionCarousal data={Saree} sectionName={"Saree"} />
         <HomeSectionCarousal data={Goun} sectionName={"Gouns"} />
         <HomeSectionCarousal data={lehngaCholi} sectionName={"LehangaCholi"} />
-        <HomeSectionCarousal data={Mens_kurta} sectionName={"Men's Kurta"} />
+        <HomeSectionCarousal data={mens_kurta} sectionName={"Men's Kurta"} />
         <HomeSectionCarousal data={Mens_Shirts} sectionName={"Men's Shirts"} />
         <HomeSectionCarousal data={Mens_Pants} sectionName={"Men's Pants"} />
         <HomeSectionCarousal data={Mens_Jeans} sectionName={"Men's Jeans"} />
