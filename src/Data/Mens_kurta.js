@@ -1,4 +1,4 @@
-export const Mens_kurta=[
+const Mens_kurta=[
     {
         "imageUrl": "https://rukminim1.flixcart.com/image/612/612/l5h2xe80/kurta/x/6/n/xl-kast-tile-green-majestic-man-original-imagg4z33hu4kzpv.jpeg?q=70",
         "brand": "Majestic Man",
@@ -1120,3 +1120,4 @@ export const Mens_kurta=[
           "description":"A traditional garment embodying elegance and grace. Crafted from fine fabrics, it features intricate embroidery and a relaxed fit, providing comfort and style."
     }
 ]
+export default Mens_kurta;
