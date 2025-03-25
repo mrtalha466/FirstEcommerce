@@ -25,7 +25,7 @@ import ProductReviewCard from './ProductReviewCard'
 
 import HomeComponentCard from '../Homepage/HomeComponentCard/HomeComponentCard'
 import { useNavigate } from 'react-router-dom'
-import { menskurta } from '../../../Data/mens_kurta'
+import { Saree } from '../../../Data/Saree'
 
 const product = {
     name: 'Basic Tee 6-Pack',
@@ -351,7 +351,7 @@ const ProductDetails = () => {
                 <section className='pt-10'>
                     <h1 className='py-5 text-xl font-bold'>Similar Products</h1>
                     <div className='flex flex-wrap space-y-5'>
-                        {menskurta.slice(0,20).map((item) => <HomeComponentCard product={item} />)}
+                        {Saree.slice(0,20).map((item) => <HomeComponentCard product={item} />)}
                     </div>
                 </section>
 

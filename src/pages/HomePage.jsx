@@ -10,7 +10,7 @@ import { Goun } from '../Data/Goun';
 import { lehngaCholi } from '../Data/LehangaCholi';
 import Footer from '../customer/components/Homepage/footer/Footer';
 import { Saree } from '../Data/Saree';
-import { menskurta } from '../Data/mens_kurta';
+
 
 
 const HomePage = () => {
@@ -23,7 +23,6 @@ const HomePage = () => {
         <HomeSectionCarousal data={Saree} sectionName={"Saree"} />
         <HomeSectionCarousal data={Goun} sectionName={"Gouns"} />
         <HomeSectionCarousal data={lehngaCholi} sectionName={"LehangaCholi"} />
-        <HomeSectionCarousal data={menskurta} sectionName={"Men's Kurta"} />
         <HomeSectionCarousal data={Mens_Shirts} sectionName={"Men's Shirts"} />
         <HomeSectionCarousal data={Mens_Pants} sectionName={"Men's Pants"} />
         <HomeSectionCarousal data={Mens_Jeans} sectionName={"Men's Jeans"} />
