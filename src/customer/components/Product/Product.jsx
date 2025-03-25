@@ -45,31 +45,31 @@ const Product = () => {
         const searchParamas = new URLSearchParams(location.search)
         let FilterValue = searchParamas.getAll(sectionId)
 
-        if (FilterValue.length>0&&FilterValue[0].split(",").includes(value)){
-            FilterValue=FilterValue[0].split(",").filter((item)=>(item)!==value)
-            if (FilterValue.length===0){
+        if (FilterValue.length > 0 && FilterValue[0].split(",").includes(value)) {
+            FilterValue = FilterValue[0].split(",").filter((item) => (item) !== value)
+            if (FilterValue.length === 0) {
                 searchParamas.delete(sectionId)
             }
-        }   
-        else{
+        }
+        else {
             FilterValue.push(value)
         }
 
-        if (FilterValue.length>0){
+        if (FilterValue.length > 0) {
             searchParamas.set(sectionId, FilterValue.join(","))
         }
-        
-        const querry=searchParamas.toString();
-        navigate({search:`?${querry}`})
-        
+
+        const querry = searchParamas.toString();
+        navigate({ search: `?${querry}` })
+
     }
 
-    const handleRadioFilterChange=(e,sectionId)=>{
+    const handleRadioFilterChange = (e, sectionId) => {
         const searchParamas = new URLSearchParams(location.search)
 
-        searchParamas.set(sectionId,e.target.value)
-        const querry=searchParamas.toString();
-        navigate({search:`?${querry}`})
+        searchParamas.set(sectionId, e.target.value)
+        const querry = searchParamas.toString();
+        navigate({ search: `?${querry}` })
 
     }
 
@@ -270,7 +270,7 @@ const Product = () => {
                                                             <div className="flex h-5 shrink-0 items-center">
                                                                 <div className="group grid size-4 grid-cols-1">
                                                                     <input
-                                                                    onChange={()=>handleFilter(option.value,section.id)}
+                                                                        onChange={() => handleFilter(option.value, section.id)}
                                                                         defaultValue={option.value}
                                                                         defaultChecked={option.checked}
                                                                         id={`filter-${section.id}-${optionIdx}`}
@@ -334,7 +334,7 @@ const Product = () => {
 
 
                                                                 <>
-                                                                    <FormControlLabel onChange={(e)=>handleRadioFilterChange(e,section.id)} value={option.value} control={<Radio />} label={option.label} />
+                                                                    <FormControlLabel onChange={(e) => handleRadioFilterChange(e, section.id)} value={option.value} control={<Radio />} label={option.label} />
 
                                                                 </>
                                                             ))}

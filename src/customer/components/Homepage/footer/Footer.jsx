@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@mui/material'
+import { Button, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-alice-carousel'
 
@@ -16,36 +16,34 @@ const Footer = () => {
                         company
                     </Typography>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             About
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
-                            {""}
-
                             Blog
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Press
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Jobs
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Patners
-                        </button>
+                        </Button>
                     </div>
 
                 </Grid>
@@ -55,34 +53,34 @@ const Footer = () => {
                         Solutions
                     </Typography>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Market
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Analytics
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Commerce
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             insights
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Support
-                        </button>
+                        </Button>
                     </div>
 
                 </Grid>
@@ -92,16 +90,16 @@ const Footer = () => {
                         Documentation
                     </Typography>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Gudies
-                            </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Api Status
-                        </button>
+                        </Button>
                     </div>
 
 
@@ -112,22 +110,22 @@ const Footer = () => {
                         Legal
                     </Typography>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Claims
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Privacy Policy
-                        </button>
+                        </Button>
                     </div>
                     <div>
-                        <button className='pb-5 ' variant='h6' gutterBottom>
+                        <Button className='pb-5 ' variant='h6' gutterBottom>
                             {""}
                             Terms and Conditions
-                        </button>
+                        </Button>
                     </div>
 
                 </Grid>
@@ -140,14 +138,13 @@ const Footer = () => {
                     </Typography>
                     <Typography variant='body2' component="p" align="center" >
                         {""}
-                        Made By Talha Akram
+                        Made By Talha Akram ❤️
                     </Typography>
                     <Link className='hover:underline' href='https://www.hanlystore.com'
                         target='blank' color='inherit' underline="always">
                         Hanly Store
                     </Link>
                 </Grid>
-
             </Grid>
 
         </>

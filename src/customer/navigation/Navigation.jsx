@@ -450,6 +450,12 @@ const Navigation=()=> {
                             ? "Admin Dashboard"
                             : "My Orders"} */}
                         </MenuItem>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                        Profile
+                        </MenuItem>
+                        <MenuItem onClick={()=>navigate("/account/order")}>
+                        My Orders
+                        </MenuItem>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
                       </Menu>
                     </div>
