@@ -268,7 +268,7 @@ const Navigation=()=> {
               <Link to="/">
                   <span className="sr-only">Your Company</span>
                   <img
-                    src="logo.png"
+                    src="Talha.png"
                     alt="Shopwithzosh"
                     className="h-8 w-8 mr-2"
                   />
