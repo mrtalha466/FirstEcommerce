@@ -11,22 +11,23 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { navigation } from "./navigationData";
 import { deepPurple } from "@mui/material/colors";
-// import AuthModal from "../Auth/AuthModal";
+import AuthModal from "../Auth/AuthModal";
 import { useDispatch, useSelector } from "react-redux";
-// import { getUser, logout } from "../../../Redux/Auth/Action";
+// import { getUser, logout } from "../../../Redux/Auth/Action"; 
 // import { getCart } from "../../../Redux/Customers/Cart/Action";
-import TextField from "@mui/material/TextField"; 
+import TextField from "@mui/material/TextField";
+import { getUser, logout } from "../../State/Auth/Action";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 
-const Navigation=()=> {
+const Navigation = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const { auth, cart } = useSelector((store) => store);
+  const dispatch = useDispatch();
+  const { auth, cart } = useSelector((store) => store);
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const openUserMenu = Boolean(anchorEl);
@@ -36,7 +37,7 @@ const Navigation=()=> {
   useEffect(() => {
     if (jwt) {
       dispatch(getUser(jwt));
-      dispatch(getCart(jwt));
+    
     }
   }, [jwt]);
 
@@ -59,14 +60,14 @@ const Navigation=()=> {
     close();
   };
 
-  // useEffect(() => {
-    // if (auth.user) {
-    //   handleClose();
-    // }
-    // if (location.pathname === "/login" || location.pathname === "/register") {
-    //   navigate(-1);
-    // }
-  // }, [auth.user]);
+  useEffect(() => {
+  if (auth.user) {
+    handleClose();
+  }
+  if (location.pathname === "/login" || location.pathname === "/register") {
+    navigate(-1);
+  }
+  }, [auth.user]);
 
   const handleLogout = () => {
     handleCloseUserMenu();
@@ -248,7 +249,7 @@ const Navigation=()=> {
 
       <header className="relative bg-white ">
         <p className="flex h-10 items-center justify-center bg-black px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-        Free Delivery All Over Pakistan
+          Free Delivery All Over Pakistan
         </p>
 
         <nav aria-label="Top" className="mx-auto">
@@ -265,14 +266,14 @@ const Navigation=()=> {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-              <Link to="/">
+                <Link to="/">
                   <span className="sr-only">Your Company</span>
                   <img
                     src="Talha.png"
                     alt="Shopwithzosh"
                     className="h-8 w-8 mr-2"
                   />
-               </Link>
+                </Link>
               </div>
 
               {/* Flyout menus */}
@@ -409,25 +410,25 @@ const Navigation=()=> {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {/* {auth.user ? ( */}
-                    <div>
-                      <Avatar
-                        className="text-white"
-                        onClick={handleUserClick}
-                        aria-controls={open ? "basic-menu" : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        // onClick={handleUserClick}
-                        sx={{
-                          bgcolor: deepPurple[500],
-                          color: "white",
-                          cursor: "pointer",
-                        }}
-                      >
-                        T
-                        {/* {auth.user?.firstName[0].toUpperCase()} */}
-                      </Avatar>
-                      {/* <Button
+                  {auth.user ?.firstName? (
+                  <div>
+                    <Avatar
+                      className="text-white"
+                      onClick={handleUserClick}
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      //  onClick={handleUserClick}
+                      sx={{
+                        bgcolor: deepPurple[500],
+                        color: "white",
+                        cursor: "pointer",
+                      }}
+                    >
+                      
+                      {auth.user?.firstName[0].toUpperCase()}
+                    </Avatar>
+                    {/* <Button
                         id="basic-button"
                         aria-controls={open ? "basic-menu" : undefined}
                         aria-haspopup="true"
@@ -436,45 +437,47 @@ const Navigation=()=> {
                       >
                         Dashboard
                       </Button> */}
-                      <Menu
-                        id="basic-menu"
-                        anchorEl={anchorEl}
-                        open={openUserMenu}
-                        onClose={handleCloseUserMenu}
-                        MenuListProps={{
-                          "aria-labelledby": "basic-button",
-                        }}
-                      >
-                        <MenuItem onClick={handleMyOrderClick}>
-                          {/* {auth.user?.role === "ROLE_ADMIN"
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={openUserMenu}
+                      onClose={handleCloseUserMenu}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      <MenuItem onClick={handleMyOrderClick}>
+                        {/* {auth.user?.role === "ROLE_ADMIN"
                             ? "Admin Dashboard"
                             : "My Orders"} */}
-                        </MenuItem>
-                        <MenuItem onClick={handleCloseUserMenu}>
+                      </MenuItem>
+                      <MenuItem onClick={handleCloseUserMenu}>
                         Profile
-                        </MenuItem>
-                        <MenuItem onClick={()=>navigate("/account/order")}>
+                      </MenuItem>
+                      <MenuItem onClick={() => navigate("/account/order")}>
                         My Orders
-                        </MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                      </Menu>
-                    </div>
-                   {/* ) : (  */}
-                    <Button
-                      onClick={handleOpen}
-                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                    >
-                      Signin
-                    </Button>
-                  {/* )}  */}
+                      </MenuItem>
+                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </Menu>
+                  </div>
+                   ) : (  
+                  <Button
+                    onClick={handleOpen}
+                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    Signin
+                  </Button>
+                   )}  
                 </div>
 
                 {/* Search */}
                 <div className="flex items-center lg:ml-6">
-                
-                  <p onClick={()=>navigate("/products/search")} className="p-2 text-gray-400 hover:text-gray-500">
+
+                  <p
+                   onClick={() => navigate("/products/search")}
+                   className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
-                    
+
                     <MagnifyingGlassIcon
                       className="h-6 w-6"
                       aria-hidden="true"
@@ -503,7 +506,7 @@ const Navigation=()=> {
           </div>
         </nav>
       </header>
-      {/* <AuthModal handleClose={handleClose} open={openAuthModal} /> */}
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 }
