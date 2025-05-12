@@ -86,10 +86,10 @@ function classNames(...classes) {
 const ProductDetails = () => {
     const [selectedColor, setSelectedColor] = useState(product.colors[0])
     const [selectedSize, setSelectedSize] = useState(product.sizes[2])
-    const navigate=useNavigate()
-    
+    const navigate = useNavigate()
 
-    const handleAddToCart=()=>{
+
+    const handleAddToCart = () => {
         navigate("/cart")
 
     }
@@ -158,7 +158,7 @@ const ProductDetails = () => {
                         {/* Options */}
                         <div className="mt-4 lg:row-span-3 lg:mt-0">
                             <h2 className="sr-only">Product information</h2>
-                            
+
                             <div className='flex space-x-5 items-center text-lg lg-text-xl text-gray-900 mt-6 '>
                                 <p className='font-semibold'>Rs,200</p>
                                 <p className='opacity-50 line-through'>Rs,250</p>
@@ -351,7 +351,7 @@ const ProductDetails = () => {
                 <section className='pt-10'>
                     <h1 className='py-5 text-xl font-bold'>Similar Products</h1>
                     <div className='flex flex-wrap space-y-5'>
-                        {Saree.slice(0,20).map((item) => <HomeComponentCard product={item} />)}
+                        {Saree.slice(0, 20).map((item) => <HomeComponentCard product={item} />)}
                     </div>
                 </section>
 

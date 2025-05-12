@@ -22,8 +22,10 @@ import { colors, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } f
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Category } from '@mui/icons-material'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { findProducts } from '../../../State/Product/Action'
+
+
 
 const sortOptions = [
     { name: 'Most Popular', href: '#', current: true },
@@ -45,6 +47,9 @@ const Product = () => {
     const navigate = useNavigate()
     const param = useParams();
     const dispatch = useDispatch();
+
+    const { product } = useSelector(store => store);
+
 
     const decodedQueryString = decodeURIComponent(location.search);
     const searchParamas = new URLSearchParams(decodedQueryString);
@@ -96,7 +101,7 @@ const Product = () => {
         const data = {
             category: param.lavelThree,
             colors: colorValue || [],
-            sizes: sizeValue | [],
+            sizes: sizeValue || [],
             minPrice,
             maxPrice,
             minDiscount: discont || 0,
@@ -107,7 +112,8 @@ const Product = () => {
         }
         dispatch(findProducts(data))
 
-    }, [param.lavelThree,
+    }, [
+        param.lavelThree,
         colorValue,
         sizeValue,
         priceValue,
@@ -395,7 +401,9 @@ const Product = () => {
                             {/* Product grid */}
                             <div className="lg:col-span-4 w-full ">
                                 <div className="flex flex-wrap justify-center bg-white py-5">
-                                    {lehngaCholi.slice(0, 40).map((item) => (
+                                    {/* lehngaCholi.slice(0, 40) */}
+
+                                    {product.products && product.products?.content?.map((item) => (
                                         <ProductCard Product={item} />
                                     ))}
                                 </div>

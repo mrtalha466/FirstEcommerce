@@ -25,7 +25,7 @@ const LoginForm = () => {
         };
 
         dispatch(login(userData))
-        // console.log("userData", userData);
+        console.log("userData", userData);
 
     }
 

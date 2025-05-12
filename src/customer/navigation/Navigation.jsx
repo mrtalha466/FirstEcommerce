@@ -13,8 +13,6 @@ import { navigation } from "./navigationData";
 import { deepPurple } from "@mui/material/colors";
 import AuthModal from "../Auth/AuthModal";
 import { useDispatch, useSelector } from "react-redux";
-// import { getUser, logout } from "../../../Redux/Auth/Action"; 
-// import { getCart } from "../../../Redux/Customers/Cart/Action";
 import TextField from "@mui/material/TextField";
 import { getUser, logout } from "../../State/Auth/Action";
 
@@ -34,12 +32,14 @@ const Navigation = () => {
   const jwt = localStorage.getItem("jwt");
   const location = useLocation();
 
+  
+
   useEffect(() => {
     if (jwt) {
       dispatch(getUser(jwt));
-    
+
     }
-  }, [jwt]);
+  }, [jwt, auth.jwt, dispatch]);
 
   const handleUserClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -61,24 +61,27 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-  if (auth.user) {
-    handleClose();
-  }
-  if (location.pathname === "/login" || location.pathname === "/register") {
-    navigate(-1);
-  }
+    if (auth.user) {
+      handleClose();
+    }
+    if (location.pathname === "/login" || location.pathname === "/register") {
+      navigate(-1);
+    }
   }, [auth.user]);
 
   const handleLogout = () => {
     handleCloseUserMenu();
     dispatch(logout());
   };
+
   const handleMyOrderClick = () => {
     handleCloseUserMenu();
     auth.user?.role === "ROLE_ADMIN"
       ? navigate("/admin")
       : navigate("/account/order");
   };
+
+  
 
   return (
     <div className="bg-white pb-3">
@@ -189,7 +192,7 @@ const Navigation = () => {
                               aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                               className="mt-6 flex flex-col space-y-6"
                             >
-                              {section.items  .map((item) => (
+                              {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
                                   <p className="-m-2 block p-2 text-gray-500">
                                     {"item.name"}
@@ -270,7 +273,7 @@ const Navigation = () => {
                   <span className="sr-only">Your Company</span>
                   <img
                     src="Talha.png"
-                    alt="TalhaStore"
+                    alt="logo"
                     className="h-8 w-8 mr-2"
                   />
                 </Link>
@@ -410,25 +413,25 @@ const Navigation = () => {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {auth.user ?.firstName? (
-                  <div>
-                    <Avatar
-                      className="text-white"
-                      onClick={handleUserClick}
-                      aria-controls={open ? "basic-menu" : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open ? "true" : undefined}
-                      //  onClick={handleUserClick}
-                      sx={{
-                        bgcolor: deepPurple[500],
-                        color: "white",
-                        cursor: "pointer",
-                      }}
-                    >
-                      
-                      {auth.user?.firstName[0].toUpperCase()}
-                    </Avatar>
-                    {/* <Button
+                  {auth.user?.firstName ? (
+                    <div>
+                      <Avatar
+                        className="text-white"
+                        onClick={handleUserClick}
+                        aria-controls={open ? "basic-menu" : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        //  onClick={handleUserClick}
+                        sx={{
+                          bgcolor: deepPurple[500],
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      >
+
+                        {auth.user?.firstName[0].toUpperCase()}
+                      </Avatar>
+                      {/* <Button
                         id="basic-button"
                         aria-controls={open ? "basic-menu" : undefined}
                         aria-haspopup="true"
@@ -437,45 +440,45 @@ const Navigation = () => {
                       >
                         Dashboard
                       </Button> */}
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl}
-                      open={openUserMenu}
-                      onClose={handleCloseUserMenu}
-                      MenuListProps={{
-                        "aria-labelledby": "basic-button",
-                      }}
-                    >
-                      <MenuItem onClick={handleMyOrderClick}>
-                        {/* {auth.user?.role === "ROLE_ADMIN"
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
+                      >
+                        <MenuItem onClick={handleMyOrderClick}>
+                          {/* {auth.user?.role === "ROLE_ADMIN"
                             ? "Admin Dashboard"
                             : "My Orders"} */}
-                      </MenuItem>
-                      <MenuItem onClick={handleCloseUserMenu}>
-                        Profile
-                      </MenuItem>
-                      <MenuItem onClick={() => navigate("/account/order")}>
-                        My Orders
-                      </MenuItem>
-                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                    </Menu>
-                  </div>
-                   ) : (  
-                  <Button
-                    onClick={handleOpen}
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Signin
-                  </Button>
-                   )}  
+                        </MenuItem>
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Profile
+                        </MenuItem>
+                        <MenuItem onClick={() => navigate("/account/order")}>
+                          My Orders
+                        </MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={handleOpen}
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                    >
+                      Signin
+                    </Button>
+                  )}
                 </div>
 
                 {/* Search */}
                 <div className="flex items-center lg:ml-6">
 
                   <p
-                   onClick={() => navigate("/products/search")}
-                   className="p-2 text-gray-400 hover:text-gray-500">
+                    onClick={() => navigate("/products/search")}
+                    className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
 
                     <MagnifyingGlassIcon

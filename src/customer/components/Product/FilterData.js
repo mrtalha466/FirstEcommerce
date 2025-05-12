@@ -28,7 +28,7 @@ export const Filter = [
         ],
     },
     {
-        Id: "size",
+        id: "size",
         name: "size",
         options: [
             { value: "s", label: "S" },
@@ -39,7 +39,7 @@ export const Filter = [
         ],
     },
     // {
-    //     Id:"brand",
+    //     id:"brand",
     //     name:"brand",
     //     options:[
     //         {value:"nike",label:"Nike"},
@@ -58,7 +58,7 @@ export const Filter = [
 
 export const singeFilters = [
     {
-        Id: "price",
+        id: "price",
         name: "price",
         options: [
             { value: "159-399", label: "159 To 399" },
@@ -70,7 +70,7 @@ export const singeFilters = [
     },
     {
 
-        Id: "discount",
+        id: "discount",
         name: "Discount Range",
         options: [
             {
