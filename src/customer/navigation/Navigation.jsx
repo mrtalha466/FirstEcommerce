@@ -189,7 +189,7 @@ const Navigation = () => {
                               aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                               className="mt-6 flex flex-col space-y-6"
                             >
-                              {section.items.map((item) => (
+                              {section.items  .map((item) => (
                                 <li key={item.name} className="flow-root">
                                   <p className="-m-2 block p-2 text-gray-500">
                                     {"item.name"}
@@ -270,7 +270,7 @@ const Navigation = () => {
                   <span className="sr-only">Your Company</span>
                   <img
                     src="Talha.png"
-                    alt="Shopwithzosh"
+                    alt="TalhaStore"
                     className="h-8 w-8 mr-2"
                   />
                 </Link>

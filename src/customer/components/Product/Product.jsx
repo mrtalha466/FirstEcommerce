@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     Dialog,
     DialogBackdrop,
@@ -18,9 +18,12 @@ import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from
 import { lehngaCholi } from '../../../Data/LehangaCholi'
 import ProductCard from './ProductCard'
 import { Filter, singeFilters } from './FilterData'
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
+import { colors, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 import FilterListIcon from '@mui/icons-material/FilterList';
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Category } from '@mui/icons-material'
+import { useDispatch } from 'react-redux'
+import { findProducts } from '../../../State/Product/Action'
 
 const sortOptions = [
     { name: 'Most Popular', href: '#', current: true },
@@ -40,6 +43,20 @@ const Product = () => {
     const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
     const location = useLocation()
     const navigate = useNavigate()
+    const param = useParams();
+    const dispatch = useDispatch();
+
+    const decodedQueryString = decodeURIComponent(location.search);
+    const searchParamas = new URLSearchParams(decodedQueryString);
+    const colorValue = searchParamas.get("color")
+    const sizeValue = searchParamas.get("size")
+    const priceValue = searchParamas.get("Price")
+    const discont = searchParamas.get("discount")
+    const stock = searchParamas.get("stock")
+    const sortValue = searchParamas.get("sort")
+    const pageNumber = searchParamas.get("page") || 1;
+
+
 
     const handleFilter = (value, sectionId) => {
         const searchParamas = new URLSearchParams(location.search)
@@ -72,6 +89,33 @@ const Product = () => {
         navigate({ search: `?${querry}` })
 
     }
+
+    useEffect(() => {
+        const [minPrice, maxPrice] = priceValue === null ? [0, 10000] : priceValue.split("-").map(Number);
+
+        const data = {
+            category: param.lavelThree,
+            colors: colorValue || [],
+            sizes: sizeValue | [],
+            minPrice,
+            maxPrice,
+            minDiscount: discont || 0,
+            stock: stock,
+            sort: sortValue || "price_low",
+            pageNumber: pageNumber || - 1,
+            pageSize: 10,
+        }
+        dispatch(findProducts(data))
+
+    }, [param.lavelThree,
+        colorValue,
+        sizeValue,
+        priceValue,
+        discont,
+        stock,
+        sortValue,
+        pageNumber
+    ])
 
     return (
         <div className="bg-white">
@@ -351,7 +395,9 @@ const Product = () => {
                             {/* Product grid */}
                             <div className="lg:col-span-4 w-full ">
                                 <div className="flex flex-wrap justify-center bg-white py-5">
-                                    {lehngaCholi.slice(0, 40).map((item) => <ProductCard Product={item} />)}
+                                    {lehngaCholi.slice(0, 40).map((item) => (
+                                        <ProductCard Product={item} />
+                                    ))}
                                 </div>
                             </div>
                         </div>

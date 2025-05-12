@@ -12,7 +12,7 @@ export const color = [
 ];
 export const Filter = [
     {
-        Id: "color",
+        id: "color",
         name: "color",
         options: [
             { value: "white", label: "white" },
