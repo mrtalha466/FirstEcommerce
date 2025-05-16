@@ -38,6 +38,7 @@ const LoginForm = () => {
                     <Grid item xs={12} >
                         <TextField
                             required
+                            type='email'
                             id="email"
                             name="email"
                             label="Email"
@@ -50,6 +51,7 @@ const LoginForm = () => {
                     <Grid item xs={12}  >
                         <TextField
                             required
+                            type='password'
                             id="password"
                             name="password"
                             label="Password"
